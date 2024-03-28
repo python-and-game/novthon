@@ -27,7 +27,14 @@ music_dir = data_dir + '/music'
 font_file = None # Default font
 font_size = 25
 shadow_offset = 2
-text_speed = 0
+text_speed = 0.5
+
+# Textbox settings
+box_alpha = 150
+box_color = 'blue'
+box_outline_size = 2
+box_border = 6
+box_select_color = 'darkblue'
 
 try:
     f = open(data_dir + '/game_config.py')

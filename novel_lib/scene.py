@@ -17,11 +17,12 @@ def dialogue(text):
     i = 0
 
     while True:
+
         clock.tick(fps)
-        if text_speed > 0:
-            i += text_speed
-        else:
+        if text_speed == 0:
             i = len(text)
+        else:
+            i += text_speed 
 
         for e in pygame.event.get():
             if e.type == QUIT or (e.type == KEYDOWN and keys.get(e.key) == 'exit_game'):
@@ -33,7 +34,7 @@ def dialogue(text):
                 else:
                     i = len(text)
 
-        screen.fill((0, 0, 0))
+        screen.fill('black')
         draw()
 
         Text(text[:int(i)]).draw()
@@ -43,9 +44,12 @@ def dialogue(text):
 def menu(items):
     if 'dialogue' in items:
         dialogue_text = items['dialogue']
+        current_option = 1
+    else:
+        dialogue_text = None
+        current_option = 0
 
     options_break = '\n'
-    current_option = 1
 
     i = 0
 
@@ -69,15 +73,17 @@ def menu(items):
                     else:
                         return item_value
 
-        screen.fill((0, 0, 0))
+        screen.fill('black')
         draw()
 
         for i, (item_name, item_value) in enumerate(items.items()):
             if item_name != 'dialogue':
                 if i == current_option:
-                    option = Text(options_break * (i + 1) + item_name)
+                    if dialogue_text: option = Text(options_break * (i + 1) + item_name, box_select_color)
+                    else: option = Text(options_break * i + item_name, box_select_color)
                 else:
-                    option = Text(options_break * (i + 1) + item_name, 'gray')
+                    if dialogue_text: option = Text(options_break * (i + 1) + item_name, color='gray')
+                    else: option = Text(options_break * i + item_name, color='gray')
 
                 option.draw()
 
@@ -94,10 +100,10 @@ def cdialogue(text):
 
     while True:
         clock.tick(fps)
-        if text_speed > 0:
-            i += text_speed
-        else:
+        if text_speed == 0:
             i = len(text)
+        else:
+            i += text_speed
 
         for e in pygame.event.get():
             if e.type == QUIT or (e.type == KEYDOWN and keys.get(e.key) == 'exit_game'):
@@ -109,7 +115,7 @@ def cdialogue(text):
                 else:
                     i = len(text)
 
-        screen.fill((0, 0, 0))
+        screen.fill('black')
         draw()
 
         CenteredText(text[:int(i)]).draw()
@@ -145,17 +151,17 @@ def cmenu(items):
                     else:
                         return item_value
 
-        screen.fill((0, 0, 0))
+        screen.fill('black')
         draw()
 
         for i, (item_name, item_value) in enumerate(items.items()):
             if item_name != 'dialogue':
                 if i == current_option:
-                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name)
-                    else: option = CenteredText(options_break * i + item_name)
+                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name, box_select_color)
+                    else: option = CenteredText(options_break * i + item_name, box_select_color)
                 else:
-                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name, 'gray')
-                    else: option = CenteredText(options_break * i + item_name, 'gray')
+                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name, color='gray')
+                    else: option = CenteredText(options_break * i + item_name, color='gray')
 
             option.draw()
 
@@ -225,6 +231,9 @@ def run_parts(scenes, scene):
 
         elif part_type == 'call':
             call(*part_value)
+
+        elif part_type == 'sound':
+            sound(*part_value)
 
         elif part_type == 'stop':
             stop()
