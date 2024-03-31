@@ -16,7 +16,6 @@ scenes = {
     # - Start Game (play begin scene)
     # - Quit Game (exit the game)
     "main_menu": [
-        ["delete", "bg day"],
         ["cmenu", {
             "Start Game": ["play", "begin"],
             "Quit Game": "exit_game"
@@ -35,7 +34,6 @@ scenes = {
     # If you don't want to go any where, then ready to live at the moon.
     "bad_ending": [
         ["dialogue", "Nov: What? Then go to the moon!"],
-        ["sound", "kick_sound.mp3"], # I didn't expect that, sorry.
         ["dialogue", "*You got kicked and landed on the moon*"],
         ["cdialogue", "THE END."],
         ["play", "main_menu"]
