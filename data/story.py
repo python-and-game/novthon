@@ -3,31 +3,24 @@
 # and a bunch of values.
 #     E.g: [ 'type', 'value1', 'value2', ...]
 #     type: The type of the part which is used to determine actions.
-#     value1, value2, ...: A list of values to use for the determined actions. 
-
+#     value1, value2, ...: A list of values to use for the determined actions.
 scenes = {
     # Initalizing the game, load day background then start the game
     # by playing the main menu.
     "init": [
         ["loader", "bg day", "day_bg.png"],
+        ["loader", "bg night", "night_bg.png"],
         ["play", "main_menu"],
-    ],
-    # A centered menu, with 2 options: 
-    # - Start Game (play begin scene)
-    # - Quit Game (exit the game)
-    "main_menu": [
-        ["delete", "bg day"],
-        ["cmenu", {
-            "Start Game": ["play", "begin"],
-            "Quit Game": "exit_game"
-        }]
     ],
     # Meet Nov, but beware of your actions, or else, moon awaits you.
     "begin": [
         ["add", "bg day"],
         ["dialogue", "Hello! Nice to meet you, I'm Nov!"],
-        ["menu", { "dialogue": "Nov: Do you want to go somewhere?",
-                   "No, I don't want to.": ["play", "bad_ending"],
+        ["dialogue", "Nov: I usually come here to relax."],
+        ["dialogue", "Nov and I are having a great time together, but Nov asked me something..."],
+        ["menu", { "dialogue": "Nov: Why don't we go somewhere?",
+                   "No, thanks.": ["play", "bad_ending"],
+                   "That's a good idea.": ["play", "normal_ending"],
                    "How about watching a movie?": ["play", "good_ending"]
                  }
         ]
@@ -35,8 +28,20 @@ scenes = {
     # If you don't want to go any where, then ready to live at the moon.
     "bad_ending": [
         ["dialogue", "Nov: What? Then go to the moon!"],
+        ["dialogue", "Nov is confused and shocked because I and Nov just talked happily and now I just say something that broke Nov's feelings."],
+        ["dialogue", "Nov is angry and suprised."],
         ["sound", "kick_sound.mp3"], # I didn't expect that, sorry.
         ["dialogue", "*You got kicked and landed on the moon*"],
+        ["stop"],
+        ["cdialogue", "THE END."],
+        ["play", "main_menu"]
+    ],
+    # You and Nov decide to meet again this night.
+    "normal_ending": [
+        ["dialogue", "Nov and I decided to meet today's night."],
+        ["add", "bg night"],
+        ["dialogue", "Nov: Today is so fun, I think we should go out more often."],
+        ["dialogue", "Yeah."],
         ["cdialogue", "THE END."],
         ["play", "main_menu"]
     ],
@@ -49,3 +54,7 @@ scenes = {
         ["play", "main_menu"]
     ]
 }
+
+if 'specials' in globals():
+    for scene, parts in specials.items():
+        scenes[scene] = parts

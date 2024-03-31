@@ -17,7 +17,6 @@ def dialogue(text):
     i = 0
 
     while True:
-
         clock.tick(fps)
         if text_speed == 0:
             i = len(text)
@@ -55,8 +54,6 @@ def menu(items):
 
     while True:
         clock.tick(fps)
-
-
         for e in pygame.event.get():
             if e.type == QUIT or (e.type == KEYDOWN and keys.get(e.key) == 'exit_game'):
                 return 'exit_game'                        
@@ -122,7 +119,7 @@ def cdialogue(text):
 
         pygame.display.update()
 
-def cmenu(items):
+def cmenu(items, fit_text=False):
     if 'dialogue' in items:
         dialogue_text = items['dialogue']
         current_option = 1
@@ -157,13 +154,13 @@ def cmenu(items):
         for i, (item_name, item_value) in enumerate(items.items()):
             if item_name != 'dialogue':
                 if i == current_option:
-                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name, box_select_color)
-                    else: option = CenteredText(options_break * i + item_name, box_select_color)
+                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name, box_select_color, box_fit_text=fit_text)
+                    else: option = CenteredText(options_break * i + item_name, box_select_color, box_fit_text=fit_text)
                 else:
-                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name, color='gray')
-                    else: option = CenteredText(options_break * i + item_name, color='gray')
+                    if dialogue_text: option = CenteredText(options_break * (i + 1) + item_name, color='gray', box_fit_text=fit_text)
+                    else: option = CenteredText(options_break * i + item_name, color='gray', box_fit_text=fit_text)
 
-            option.draw()
+                option.draw()
 
         try:
             CenteredText(dialogue_text).draw()
@@ -190,6 +187,7 @@ def run_parts(scenes, scene):
 
         elif part_type == 'dialogue':
             result = dialogue(*part_value)
+
             if result == 'exit_game':
                 return
 

@@ -93,7 +93,7 @@ class Text:
 
 class CenteredText:
     
-    def __init__(self, text, box=None, color='white'):
+    def __init__(self, text, box=None, color='white', box_fit_text=False):
         pygame.init()
         try:
             self.font = pygame.font.Font(font_file, font_size)
@@ -103,6 +103,7 @@ class CenteredText:
         self.lines = []
         self.color = color
         self.box_color = box
+        self.box_fit_text = box_fit_text
 
         # Split the text into lines based on the '\n' character
         lines = text.split('\n')
@@ -128,7 +129,12 @@ class CenteredText:
 
     def draw(self):
         x, y = screen.get_rect().center
-        box_width = window_width
+
+        if not self.box_fit_text:
+            box_width = window_width
+        else:
+            box_width = self.font.size(max(self.lines))[0]
+
         box_height = sum(self.font.size(line)[1] for line in self.lines)
         box_y = y
 

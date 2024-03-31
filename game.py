@@ -7,6 +7,11 @@ from novel_lib import *
 import os.path
 
 # Load the script(s), a bunch of datas which are moved to the `data_dir` directory to make this file look cleaner.
+try:
+    exec(open(data_dir + '/special_scene.py').read(), globals())
+except:
+    pass
+
 exec(open(data_dir + '/story.py').read(), globals())
 
 # Now let's start the game.

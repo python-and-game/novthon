@@ -18,6 +18,7 @@ keys = {
     K_s: 'save_game',
     K_l: 'load_game'
 }
+
 # File location settings
 data_dir = 'data'
 image_dir = data_dir + '/images'
@@ -35,6 +36,7 @@ box_color = 'blue'
 box_outline_size = 2
 box_border = 6
 box_select_color = 'darkblue'
+
 
 try:
     f = open(data_dir + '/game_config.py')
