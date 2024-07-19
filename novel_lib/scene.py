@@ -13,6 +13,53 @@ from .music import *
 
 clock = pygame.time.Clock()
 
+def fadein(image, duration=in_duration):
+    add_to_render(image)
+    for i in range(0, 256):
+        images[image].image.set_alpha(255 - i)
+        screen.fill((0, 0, 0))
+        draw()
+        pygame.display.flip()
+        frames = int(duration * fps)  # Calculate the number of frames
+        for _ in range(frames // 255):
+            pygame.display.flip()
+
+def hold(duration=hold_duration):
+    screen.fill((0, 0, 0))
+    pygame.display.flip()
+    frames = int(duration * fps)  # Calculate the number of frames
+    for _ in range(frames):
+        pygame.display.flip()
+
+def fadeout(image, duration=out_duration):
+    add_to_render(image)
+    for i in range(256):
+        images[image].image.set_alpha(i)
+        screen.fill((0, 0, 0))
+        draw()
+        pygame.display.flip()
+        frames = int(duration * fps)  # Calculate the number of frames
+        
+        for _ in range(frames // 255):
+            pygame.display.flip()
+
+    return True
+
+def fade(in_image, out_image, in_=in_duration, hold_=hold_duration, out_=out_duration):
+    fade_end = False
+    while not fade_end:
+        clock.tick(fps)
+        for e in pygame.event.get():
+            if e.type == QUIT or (e.type == KEYDOWN and keys.get(e.key) == 'exit_game'):
+                return 'exit_game'  
+                
+        fadein(in_image, in_)
+        hold(hold_)
+        if fadeout(out_image, out_):
+            fade_end = True
+
+    return 'fade_end'
+
 def dialogue(text):
     i = 0
 
@@ -181,6 +228,15 @@ def run_parts(scenes, scene):
 
         elif part_type == 'add':
             add_to_render(part_value[0])
+
+        elif part_type == 'fade':
+            result = fade(*part_value)
+
+            if result == 'exit_game':
+                return
+            
+            elif result == 'fade_end':
+                continue
 
         elif part_type == 'delete':
             delete(part_value[0])

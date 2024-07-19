@@ -8,13 +8,14 @@ scenes = {
     # Initalizing the game, load day background then start the game
     # by playing the main menu.
     "init": [
+        ["loader", "black", (0, 0, 0)],
         ["loader", "bg day", "day_bg.png"],
         ["loader", "bg night", "night_bg.png"],
         ["play", "main_menu"],
     ],
     # Meet Nov, but beware of your actions, or else, moon awaits you.
     "begin": [
-        ["add", "bg day"],
+        ["fade", "black", "bg day"],
         ["dialogue", "Hello! Nice to meet you, I'm Nov!"],
         ["dialogue", "Nov: I usually come here to relax."],
         ["dialogue", "Nov and I are having a great time together, but Nov asked me something..."],
@@ -39,7 +40,7 @@ scenes = {
     # You and Nov decide to meet again this night.
     "normal_ending": [
         ["dialogue", "Nov and I decided to meet today's night."],
-        ["add", "bg night"],
+        ["fade", "bg day", "bg night"],
         ["dialogue", "Nov: Today is so fun, I think we should go out more often."],
         ["dialogue", "Yeah."],
         ["cdialogue", "THE END."],
@@ -47,7 +48,7 @@ scenes = {
     ],
     # If you go to the cinema with Nov, then ready for another time.
     "good_ending": [
-        ["delete", "bg day"],
+        ["fade", "bg day", "black"],
         ["dialogue", f"What a wonderful day, I wish we can continue it."],
         ["dialogue", "Nov: Yeah!"],
         ["cdialogue", "THE END."],

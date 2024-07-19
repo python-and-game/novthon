@@ -11,7 +11,12 @@ pygame.display.set_caption(window_title)
 class Image:
 
     def __init__(self, image):
-        self.image = pygame.image.load(image_dir + '/' + image)
+        try:
+            self.image = pygame.image.load(image_dir + '/' + image)
+        except:
+            self.image = pygame.Surface(screen.get_size())
+            self.image.fill(image)
+
         self.rect = self.image.get_rect()
         self.rect.center = screen.get_rect().center
 
@@ -37,5 +42,6 @@ def delete(name):
     else:
         if name == 'all':
             images_to_render = {}
+    draw()
 
     

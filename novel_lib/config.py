@@ -37,7 +37,12 @@ box_outline_size = 2
 box_border = 6
 box_select_color = 'darkblue'
 
+# Fade settings
+in_duration = 0.5
+hold_duration = 0
+out_duration = 0.5
 
+# Load the customized config file from the game
 try:
     f = open(data_dir + '/game_config.py')
     exec(f.read(), globals())

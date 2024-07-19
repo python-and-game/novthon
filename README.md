@@ -1,19 +1,25 @@
 # Update
-This version comes with brand new text box feature, `cmenu` function (the python-equivalent of `cmenu` part) 
-comes with a new argument `fit_text`, if it's True, the box is resized to the text's size, you can achive the
-same effect by adding a `True` after the dictionary of `cmenu` part. (Example: Watch `data/special_scene.py`)
+It took me a while to get my code to work, it was hard, but at least i'm able to done it,
+this development version included a **NEW** fading transiton! With the new transition a
+new part type `fade` is also included.
 
-With the brand new text box feature, there comes some new configs for it: 
-- `box_alpha`: Set the alpha of the box, default is `150`
-- `box_color`: The fill color of the box. Default is `blue`, while the demo is `darkcyan`
-- `box_outline_size`: The size of the box's outline, default is `2`, while the demo is `1`.
-- `box_border`: The roundness of the box's border, default is `6`, while the demo is doubled.
-- `box_select_color`: The color of the box when it's selected in `menu` or `cmenu`, default is `darkblue`, while
-the demo is `darkcyan`
+The `fade` keyword comes with 3 configure settings (used for default fading):
+- `in_duration`: This controls the duration of the dissapearing image (default is 0.01 seconds or 100 milliseconds)
+- `hold_duration`: This controls the duration of the screen when it stayed as black (default is 0 second, which means the holding will be skipped)
+- `out_duration`: This controls the duration of the appearing image (default is 0.01 seconds or 100 milliseconds)
 
-The demo game includes a new ending, a normal one, which is the same as the good one, except the player meets Nov
-at the same place in the night only.
+To use different duration for the fade in, hold and out without having the default settings modified.
 
-Here is a clip (converted to gif) with the full game (with all endings).
+```python
+# The duration must always: in -> hold -> out so if you're not modifying in that order, fill the value 
+# you didn't want to modify with the default in config file.
+[ "fade", "in_image", "out_image", in_duration, 0.5, out_duration ]
+``` 
 
-![recording](recording.gif)  
+For a clearer view about the newly included transition, the clip below here will help you.
+![recording](recording.gif)
+
+
+
+
+
