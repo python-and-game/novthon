@@ -4,9 +4,9 @@ this development version included a **NEW** fading transiton! With the new trans
 new part type `fade` is also included.
 
 The `fade` keyword comes with 3 configure settings (used for default fading):
-- `in_duration`: This controls the duration of the dissapearing image (default is 0.01 seconds or 100 milliseconds)
+- `in_duration`: This controls the duration of the dissapearing image (default is 0.5 seconds)
 - `hold_duration`: This controls the duration of the screen when it stayed as black (default is 0 second, which means the holding will be skipped)
-- `out_duration`: This controls the duration of the appearing image (default is 0.01 seconds or 100 milliseconds)
+- `out_duration`: This controls the duration of the appearing image (default is 0.5)
 
 To use different duration for the fade in, hold and out without having the default settings modified.
 
