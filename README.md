@@ -17,7 +17,7 @@ To use different duration for the fade in, hold and out without having the defau
 ``` 
 
 For a clearer view about the newly included transition, the clip below here will help you.
-![recording](https://github.com/user-attachments/assets/4069454d-86fc-4b04-91cd-835d27ad9b18)
+![recording](recording.gif)
 
 
 
