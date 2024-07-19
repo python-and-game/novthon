@@ -19,7 +19,4 @@ To use different duration for the fade in, hold and out without having the defau
 For a clearer view about the newly included transition, the clip below here will help you.
 ![recording](recording.gif)
 
-
-
-
-
+**NOTE**: I changed the output program to use `cx_Freeze` instead, hope you don't mind 😅
