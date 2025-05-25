@@ -1,0 +1,13 @@
+[project]
+name = "Novel_Python"
+version = "0.0.1"
+authors = [
+  { name = "python-and-game", email = "ntienloc057@gmail.com" },
+]
+description = "A python-package that uses pygame to create novels"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = ["pygame"]
