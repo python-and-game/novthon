@@ -1,4 +1,6 @@
 # FINALLY, THIS IS THE OFFICIAL RELEASE 🎉🎉🎉
+This is the 2nd release of first major release, as i found an error.
+
 # Update
 
 - Warping between options is improved!
