@@ -23,6 +23,3 @@ pip install .
 - Fading was kinda changed in some ways in the coding format but mostly
 the same (it can be skipped by pressing 'ok' key (default is K_SPACE and K_RETURN)
 but it isn't really effective, you should press it fast if you wanted to skip transitions
-
-# PLEASE NOTE
-The Release Version will seperate both games into programs so you can download either of them

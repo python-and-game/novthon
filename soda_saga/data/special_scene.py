@@ -13,7 +13,7 @@ specials = {
     "main_menu": [
         ["delete", "all"],
         ["cmenu", {
-            "Start Game": ["play", "soda_intro"],
+            "Start Game": ["play", "begin"],
             "Quit Game": "exit_game"
         }, True]
     ]

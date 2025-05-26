@@ -160,7 +160,7 @@ def menu(items):
                 if keys.get(event.key) == 'move_up':
                     current_option = (current_option - 1) % len(items)
                     if list(items.keys())[current_option] == 'dialogue':
-                        current_option = len(options.keys())-1
+                        current_option = len(items.keys())-1
 
                 elif keys.get(event.key) == 'move_down':
                     current_option = (current_option + 1) % len(items)
@@ -216,7 +216,7 @@ def cmenu(items, fit_text=False):
                 if keys.get(event.key) == 'move_up':
                     current_option = (current_option - 1) % len(items)
                     if list(items.keys())[current_option] == 'dialogue':
-                        current_option = len(options.keys())-1
+                        current_option = len(items.keys())-1
 
                 elif keys.get(event.key) == 'move_down':
                     current_option = (current_option + 1) % len(items)

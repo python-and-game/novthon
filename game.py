@@ -21,16 +21,15 @@ story = open(os.path.join(data_dir, 'story.py'), encoding='utf-8')
 exec(story.read(), globals())
 story.close()
 
+if not 'main_menu' in scenes:
+    scenes['main_menu'] = scenes.pop('begin')
+
 # Now let's start the game.
 running = True
 while running:
     try:
         result = run_parts(scenes, 'init')  # Init scene allows users to load stuff before playing the game.
     except:
-        try:
-            result = run_parts(scenes, 'main_menu')
-
-        except:
-            result = run_parts(scenes, 'soda_intro')
+        result = run_parts(scenes, 'main_menu')
 
     running = False

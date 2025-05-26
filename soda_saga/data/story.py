@@ -1,5 +1,5 @@
 scenes = {
-    "soda_intro": [
+    "begin": [
         ["fade", "black", "bg ruins"],
         ["dialogue", "Narrator: The year is 3025."],
         ["dialogue", "Narrator: The last soda vending machine on Earth has just been discovered in the ruins of what was once known as Seoul."],
