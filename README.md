@@ -4,7 +4,7 @@ This release brings new features while fixing and improving old features
 # Update
 - `game.py` has better code now
 - `Novel_Python.scene.menu` and `Novel_Python.scene.cmenu` has an error at the key navigation but it is now fixed
-- added a `build.py` file using cx_Freeze
+- added a `build.py` file using `cx_Freeze`
   + Copy game.py file to your project
   + Create an icon or copy the default game's icon or use pygame icon
   + Set the environment variable `GAMEDIR` in your console to the location of your project's directory
