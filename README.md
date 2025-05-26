@@ -13,3 +13,4 @@ This release brings new features while fixing and improving old features
   the name you want for the executable file (e.g: `set TARGET_NAME=soda`)
   + Then run `python build.py build` to build your project
   + Test the executable
+- The `soda_saga` and `default_game` now have icon each for the executable release
